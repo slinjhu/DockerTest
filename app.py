@@ -1,10 +1,18 @@
 from flask import Flask
+import socket
+
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello world"
+    html = """
+    <h1>Hello world</h1>
+    <b>Hostname</b>: {hostname}
+    """
+    return html.format(
+        hostname=socket.gethostname()
+    )
 
 
 if __name__ == "__main__":
