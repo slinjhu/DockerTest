@@ -2,6 +2,7 @@
 
 ENV_NAME=env
 APP_NAME=friendly-hello
+USER_REPO_TAG=slinmagicleap/get-started:part2
 
 env:
 	(rm -rf $(ENV_NAME))
@@ -14,3 +15,10 @@ build:
 
 run:
 	docker run -p 8000:80 $(APP_NAME)
+
+publish:
+	docker tag $(APP_NAME) $(USER_REPO_TAG)
+	docker push $(USER_REPO_TAG)
+
+remote:
+	docker run -p 8000:80 $(USER_REPO_TAG)
