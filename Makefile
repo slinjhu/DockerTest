@@ -22,3 +22,6 @@ publish:
 
 remote:
 	docker run -p 8000:80 $(USER_REPO_TAG)
+
+deploy:
+	docker stack deploy -c docker-compose.yml $(APP_NAME)
